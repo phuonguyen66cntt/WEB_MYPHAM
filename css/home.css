@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+}
+
+.header{
+    width: 100%;
+    height: 100px;
+    background: #ff81a5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+}
+
+.left-h{
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.menu-icon{
+    margin-left: 50px;
+    font-size: 30px;
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+.menu-icon:hover{
+    cursor: pointer;
+}
+
+.logo{
+    padding: 100px;
+    width: 150px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.logo img{
+    width: 80px;
+    height: 80px;
+}
+
+.search{
+    width: 600px;
+    height: 45px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 0 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search input{
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+}
+
+.box-i{
+    font-size: 22px;
+}
+
+.box-i:hover{
+    cursor: pointer;
+}
+
+.right-h{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: #ffffff;
+    padding-right: 120px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.item i{
+    font-size: 28px;
+}
+
+.item:hover{
+    cursor: pointer;
+}
+
+.cart{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.cart i{
+    font-size: 28px;
+}
+
+.cart:hover{
+    cursor: pointer;
+}
+
+.cart-count{
+        position: absolute;
+        background: red;
+        color: white;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        top:30px;
+        right: 350px;
+    }
+
+
