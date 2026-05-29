@@ -90,3 +90,62 @@ const fsSwiper = new Swiper(".fs-swiper", {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", function(){
+    const openLogin = document.querySelector(".open-login");
+    const loginOverlay = document.querySelector(".login-overlay");
+    const closeLogin = document.querySelector(".close-login");
+    openLogin.addEventListener("click", function(){
+        loginOverlay.classList.add("active");
+    });
+
+    closeLogin.addEventListener("click", function(){
+        loginOverlay.classList.remove("active");
+    });
+
+    loginOverlay.addEventListener("click", function(e){
+       if(e.target === loginOverlay){
+            loginOverlay.classList.remove("active");
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+    const openRegister = document.querySelector(".open-register");
+    const registerOverlay = document.querySelector(".register-overlay");
+    const closeRegister = document.querySelector(".close-register");
+
+    openRegister.addEventListener("click", function(){
+        registerOverlay.classList.add("active");
+    });
+
+    closeRegister.addEventListener("click", function(){
+        registerOverlay.classList.remove("active");
+    });
+
+    registerOverlay.addEventListener("click", function(e){
+        if(e.target === registerOverlay){
+            registerOverlay.classList.remove("active");
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function(){
+    const openAdmin = document.querySelector(".open-admin");
+    const adminOverlay = document.querySelector(".admin-overlay");
+    const closeAdmin = document.querySelector(".close-admin");
+
+    openAdmin.addEventListener("click", function(){
+        adminOverlay.classList.add("active");
+    });
+
+    closeAdmin.addEventListener("click", function(){
+        adminOverlay.classList.remove("active");
+    });
+
+    adminOverlay.addEventListener("click", function(e){
+        if(e.target === adminOverlay){
+            adminOverlay.classList.remove("active");
+        }
+    });
+});
