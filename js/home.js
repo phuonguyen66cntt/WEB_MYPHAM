@@ -149,3 +149,19 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 });
+
+function loginAdmin() {
+
+    let user = document.getElementById("adminUser").value;
+    let pass = document.getElementById("adminPass").value;
+
+    if(user === "admin" && pass === "123456"){
+
+        window.location.href = "admin.html";
+
+    }else{
+
+        alert("Sai tài khoản hoặc mật khẩu");
+
+    }
+}

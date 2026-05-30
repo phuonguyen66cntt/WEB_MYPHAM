@@ -996,7 +996,7 @@
                     <label for="remember">Ghi nhớ đăng nhập</label>
                     <div class="mk"><p>Quên mật khẩu?</p></div>   
                 </div>
-                <button>Đăng nhập</button>
+                <button onclick="loginAdmin()">Đăng nhập</button>
                 <div class="link">
                     <span class="minus"><i class="bx bx-minus bx-rotate-180"></i></span>
                     <p>Hoặc</p>
@@ -1017,26 +1017,31 @@
                 <input type="text" placeholder="Tên đăng nhập">
                 <input type="email" placeholder="Email">
                 <input type="password" placeholder="Mật khẩu">
-                <button>Đăng ký</button>
+                <button onclick="loginAdmin()">Đăng ký</button>
             </div>
         </div>
 
-        <div class="admin-overlay">
-            <div class="admin-frame">
-                <span class="close-admin">✕</span>
-                <h2>Admin</h2>
-                <input type="text" placeholder="Tên tài khoản admin">
-                <input type="password" placeholder="Mật khẩu">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">Ghi nhớ đăng nhập</label>
-                    <div class="mk"><p>Quên mật khẩu?</p></div>   
-                </div>
-                <button>Đăng nhập</button>
+      <div class="admin-overlay">
+        <div class="admin-frame">
+            <span class="close-admin">✕</span>
+            <h2>Admin</h2>
+            <input
+                type="text"
+                id="adminUser"
+                placeholder="Tên tài khoản admin">
+            <input
+                type="password"
+                id="adminPass"
+                placeholder="Mật khẩu">
+            <div class="remember-me"> 
+                <input type="checkbox" id="remember"> 
+                <label for="remember">Ghi nhớ đăng nhập</label>
             </div>
+            <button onclick="loginAdmin()">Đăng nhập</button>
         </div>
+    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-        <script src="../js/scripts.js"></script>
+        <script src="../js/home.js"></script>
     </body>
 </html>
