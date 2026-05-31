@@ -389,12 +389,15 @@ html{
     transform: translateY(-3px);
 }
 
+main{
+    flex: 1;
+}
+
 .main-container{
     width: 90%;
     margin: 30px auto;
     display: flex;
     gap: 30px;
-    flex: 1;
 }
 
 .filter{
@@ -463,7 +466,7 @@ html{
 
 .star-list div{
     font-size: 20px;
-    color: gold;
+    color: #ff81a5;
     margin-bottom: 5px;
 }
 
@@ -589,4 +592,25 @@ html{
 
 .load-more:hover{
     background: #ff5f8d;
+}
+
+.product-link,
+.product-link:visited,
+.product-link:hover,
+.product-link:active{
+    text-decoration: none;
+    color: inherit;
+}
+
+.hidden-product{
+    display: none;
+}
+
+.hidden-product.show{
+    display: block;
+}
+
+.product-link{
+    text-decoration: none;
+    color: inherit;
 }
