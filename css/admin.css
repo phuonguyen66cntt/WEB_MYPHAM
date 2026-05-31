@@ -252,3 +252,194 @@ html{
     color: #ff81a5;
     transform: translateY(-3px);
 }
+
+/* ================= TABLET ================= */
+@media (max-width: 1024px){
+
+    .main{
+        padding: 20px;
+    }
+
+    .logo{
+        padding: 0;
+        width: auto;
+        height: auto;
+    }
+
+    .logo img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .dashboard{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card:nth-child(2){
+        grid-column: span 2;
+    }
+
+    .footer-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px){
+
+    .header{
+        height: auto;
+        padding: 15px;
+
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo{
+        padding: 0;
+    }
+
+    .logo img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .log-out{
+        position: static;
+    }
+
+    .main{
+        padding: 15px;
+    }
+
+    .banner{
+        padding: 20px 15px;
+    }
+
+    .banner h2{
+        font-size: 22px;
+    }
+
+    .revenue{
+        flex-direction: column;
+    }
+
+    .box{
+        width: 100%;
+    }
+
+    .box p{
+        font-size: 16px;
+    }
+
+    .box span{
+        font-size: 22px;
+    }
+
+    .dashboard{
+        grid-template-columns: 1fr;
+    }
+
+    .card:nth-child(2){
+        grid-column: auto;
+    }
+
+    .stats-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .chart{
+        height: 180px;
+    }
+
+    .footer-container{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-list{
+        justify-content: center;
+    }
+}
+
+/* ================= MOBILE NHỎ ================= */
+@media (max-width: 480px){
+
+    .header{
+        padding: 12px;
+    }
+
+    .logo img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .log-out{
+        font-size: 14px;
+    }
+
+    .banner h2{
+        font-size: 18px;
+    }
+
+    .box{
+        padding: 15px;
+    }
+
+    .box p{
+        font-size: 14px;
+    }
+
+    .box span{
+        font-size: 18px;
+    }
+
+    .stats-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .card{
+        padding: 15px;
+    }
+
+    .chart{
+        gap: 8px;
+        height: 150px;
+        padding: 10px;
+    }
+
+    .product{
+        gap: 10px;
+    }
+
+    .product img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer-container{
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 1024px){
+
+    .dashboard{
+        grid-template-columns: 1fr;
+    }
+
+    .card{
+        width: 100%;
+    }
+
+    .card:nth-child(2){
+        grid-column: auto;
+    }
+
+}

@@ -940,17 +940,20 @@ html{
 
 .remember-me{
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     font-size: 14px;
-}
-
-.remember-me input{
-    margin-left: 5px;
+    width: 100%;
 }
 
 .remember-me label{
-    margin-right: 140px;
+    margin-right: auto;
+    margin-left: 5px;
+}
+
+.mk{
+    color: #ff81a5;
+    cursor: pointer;
 }
 
 .link{
@@ -1111,4 +1114,16 @@ html{
 .admin-overlay.active{
     opacity: 1;
     visibility: visible;
+}
+
+.account-sidebar p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.account-sidebar p i{
+    font-size: 18px;
 }

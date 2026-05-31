@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>L.U.V</title>
+        <link rel="stylesheet" href="../css/SpSearch.css">
+        <link rel="icon"href="../img/logo.jpg">
+        <!-- Basic Icons -->
+        <!-- Basic Icons -->
+        <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+        <!-- Filled Icons -->
+        <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+        <!-- Brand Icons -->
+        <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    </head>
+<body>
+        <div class="container">
+        <header class="header">
+            <div class="left-h">
+                <div class="logo" onclick="window.location.href='home.html'">
+                    <img src="../img/logo1.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <div class="box-i">
+                    <i class="bx bx-search"></i>
+                </div>
+
+                <!-- SEARCH DROPDOWN -->
+                <div class="search-dropdown">
+                    <!-- Đã tìm -->
+                    <div class="search-section">
+                        <h4>Tìm kiếm gần đây</h4>
+                        <div class="search-history">
+                            <p><i class='bx bx-history'></i> Son dưỡng</p>
+                            <p><i class='bx bx-history'></i> Serum vitamin C</p>
+                            <p><i class='bx bx-history'></i> Kem chống nắng</p>
+                        </div>
+                    </div>
+                    <!-- Đề xuất -->
+                    <div class="search-section">
+                        <h4>Đề xuất cho bạn</h4>
+                        <div class="suggest-product">
+                            <div class="suggest-item">
+                                <img src="../img/img8.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Son Tint Romand</p>
+                                    <span>200.000đ</span>
+                                </div>
+                            </div>
+                            <div class="suggest-item">
+                                <img src="../img/img9.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Serum Caryophy</p>
+                                    <span>350.000đ</span>
+                                </div>
+                            </div>
+                            <div class="suggest-item">
+                                <img src="../img/img10.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Kem dưỡng ẩm</p>
+                                    <span>180.000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-h">
+                <div class="cart">
+                    <i class="bx bx-cart" ></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                    <p>Giỏ hàng</p>
+                </div>
+                <div class="item account-item">
+                    <i class='bx bx-user'></i>
+                    <p>Tài khoản</p>
+                    <div class="account-sidebar" id="accountMenu">
+                        <p class="open-login">Tài khoản của tôi</p>
+                        <p class="open-register">Đăng xuất <i class="bx bx-arrow-out-right-square-half"></i></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+
+    <div class="filter">
+        <h3>Bộ lọc tìm kiếm</h3>
+
+        <div class="filter-group">
+            <div class="filter-header">Nơi bán</div>
+
+            <div class="filter-item">Nha Trang</div>
+            <div class="filter-item">Hà Nội</div>
+            <div class="filter-item">TP.HCM</div>
+            <div class="filter-item">Hải Phòng</div>
+
+            <div class="see-more">Xem thêm ▾</div>
+        </div>
+
+        <div class="filter-group">
+            <div class="filter-header">Khoảng giá</div>
+
+            <div class="price-box">
+                <input type="text" placeholder="Từ">
+                <span>—</span>
+                <input type="text" placeholder="Đến">
+            </div>
+
+            <button class="apply-btn">Áp dụng</button>
+        </div>
+
+        <div class="filter-group">
+            <div class="filter-header">Đánh giá</div>
+
+            <div class="star-list">
+                <div>★★★★★</div>
+                <div>★★★★☆</div>
+                <div>★★★☆☆</div>
+                <div>★★☆☆☆</div>
+                <div>★☆☆☆☆</div>
+            </div>
+        </div>
+
+        <button class="reset-btn">Thiết lập lại</button>
+    </div>
+
+    <div class="result">
+
+        <h3>Kết quả tìm kiếm cho từ khóa</h3>
+
+        <div class="sort-bar">
+            <span>Sắp xếp theo</span>
+
+            <button>Liên quan</button>
+            <button>Mới nhất</button>
+            <button>Bán chạy</button>
+            <button>Giá</button>
+        </div>
+
+        <div class="product-list">
+
+           <div class="pro-item">
+                <img src="../img/img8.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img8.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img9.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img10.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img11.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img12.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img13.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img14.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img16.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="pro-item">
+                <img src="../img/img17.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <div class="pro-item">
+                <img src="../img/img17.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <div class="pro-item">
+                <img src="../img/img17.jpg" alt="">
+                <p>Tên sản phẩm</p>
+                <div class="item">
+                    <p>200.000đ</p>
+                    <div class="old-price">
+                        <p>350.000đ</p>
+                    </div>
+                </div>
+                <div class="star">
+                    <p>5.0</p>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="load-more">Xem thêm</button>
+
+    </div>
+
+</div>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- LOGO -->
+                <div class="footer-col footer-logo">
+                    <img src="../img/logo1.jpg" alt="logo">
+                </div>
+                <!-- GIỚI THIỆU -->
+                <div class="footer-col">
+                    <h4>Giới thiệu</h4>
+                    <ul>
+                        <li>Về L.U.V</li>
+                        <li>Chính sách bảo mật</li>
+                        <li>Điều khoản dịch vụ</li>
+                        <li>Hướng dẫn mua hàng</li>
+                    </ul>
+                </div>
+                <!-- LIÊN HỆ -->
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <ul>
+                        <li>123 Đường ABC, Khánh Hòa</li>
+                        <li>0123 456 789</li>
+                        <li>info@luv.com</li>
+                    </ul>
+                </div>
+                <!-- MẠNG XÃ HỘI -->
+                <div class="footer-col">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-list">
+                        <a href="#">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                        <i class="fa fa-google" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

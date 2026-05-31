@@ -23,7 +23,7 @@
                 <div class="menu-icon">
                     <i class="bx bx-list"></i>
                 </div>
-                <div class="logo">
+                <div class="logo" onclick="window.location.href='home.html'">
                     <img src="../img/logo1.jpg" alt="logo">
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 <div class="item account-item">
                     <i class='bx bx-user'></i>
                     <p>Tài khoản</p>
-                    <div class="account-sidebar">
+                    <div class="account-sidebar" id="accountMenu">
                         <p class="open-login">Đăng nhập</p>
                         <p class="open-register">Đăng ký</p>
                         <p class="open-admin">Admin</p>
@@ -90,6 +90,7 @@
                 </div>
             </div>
         </header>
+        
         <main class="main-container">
             <div class="one">
                 <div class="banner"><img src="../img/banner1.jpg" alt="Banner"></div>
@@ -983,7 +984,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-        <script src="../js/scripts.js"></script>
 
         <div class="login-overlay">
             <div class="login-frame">
@@ -996,7 +996,7 @@
                     <label for="remember">Ghi nhớ đăng nhập</label>
                     <div class="mk"><p>Quên mật khẩu?</p></div>   
                 </div>
-                <button onclick="loginAdmin()">Đăng nhập</button>
+                <button onclick="loginTK()">Đăng nhập</button>
                 <div class="link">
                     <span class="minus"><i class="bx bx-minus bx-rotate-180"></i></span>
                     <p>Hoặc</p>
@@ -1017,7 +1017,7 @@
                 <input type="text" placeholder="Tên đăng nhập">
                 <input type="email" placeholder="Email">
                 <input type="password" placeholder="Mật khẩu">
-                <button onclick="loginAdmin()">Đăng ký</button>
+                <button onclick="registerTK()">Đăng ký</button>
             </div>
         </div>
 

@@ -157,6 +157,11 @@ function loginAdmin() {
 
     if(user === "admin" && pass === "123456"){
 
+        
+        // Lưu thông tin nếu cần
+        localStorage.setItem("username", username);
+        localStorage.setItem("isLogin", "true");
+
         window.location.href = "admin.html";
 
     }else{
@@ -164,4 +169,91 @@ function loginAdmin() {
         alert("Sai tài khoản hoặc mật khẩu");
 
     }
+}
+
+function loginTK() {
+
+    let username = document.querySelector('.login-frame input[type="text"]').value;
+    let password = document.querySelector('.login-frame input[type="password"]').value;
+
+    if(username === "Hồ Ngọc Hà" && password === "123456"){
+
+        localStorage.setItem("isLogin", "true");
+        localStorage.setItem("username", username);
+
+        window.location.href = "tkdadangnhap.html";
+
+    }else{
+
+        alert("Sai tài khoản hoặc mật khẩu!");
+
+    }
+
+}   
+
+function registerTK() {
+
+    let username = document.querySelector('.register-frame input[type="text"]').value;
+    let email = document.querySelector('.register-frame input[type="email"]').value;
+    let password = document.querySelector('.register-frame input[type="password"]').value;
+
+    if(username && email && password){
+
+
+        // Chuyển trang
+        window.location.href = "tkdadangnhap.html";
+
+    }else{
+        alert("Vui lòng nhập đầy đủ thông tin!");
+    }
+}
+
+// Hiển thị menu tài khoản theo trạng thái đăng nhập
+window.addEventListener("DOMContentLoaded", () => {
+
+    const accountMenu = document.getElementById("accountMenu");
+
+    const isLogin = localStorage.getItem("isLogin");
+    const username = localStorage.getItem("username");
+
+    if (isLogin === "true") {
+
+        accountMenu.innerHTML = `
+            <p onclick="goProfile()">Tài khoản của tôi</p>
+            <p onclick="logout()">Đăng xuất <i class="bx bx-arrow-out-right-square-half"></i></p>
+        `;
+
+    } else {
+
+        accountMenu.innerHTML = `
+            <p class="open-login">Đăng nhập</p>
+            <p class="open-register">Đăng ký</p>
+            <p class="open-admin">Admin</p>
+        `;
+
+        // gắn lại sự kiện mở form
+        document.querySelector(".open-login")?.addEventListener("click", () => {
+            document.querySelector(".login-overlay").classList.add("active");
+        });
+
+        document.querySelector(".open-register")?.addEventListener("click", () => {
+            document.querySelector(".register-overlay").classList.add("active");
+        });
+
+        document.querySelector(".open-admin")?.addEventListener("click", () => {
+            document.querySelector(".admin-overlay").classList.add("active");
+        });
+    }
+});
+
+function goProfile() {
+    window.location.href = "tkdadangnhap.html";
+}
+
+function logout() {
+
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("username");
+
+    window.location.href = "home.html";
 }
