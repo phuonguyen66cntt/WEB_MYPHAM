@@ -58,18 +58,3 @@ function logout() {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".search input").value = "";
 });
-
-const seeMoreBtn = document.querySelector(".see-more");
-const hiddenPlace = document.querySelector(".filter-group .hidden-pr");
-
-seeMoreBtn.addEventListener("click", () => {
-
-    hiddenPlace.classList.toggle("show");
-
-    if(hiddenPlace.classList.contains("show")){
-        seeMoreBtn.innerHTML = "Thu gọn ▲";
-    }else{
-        seeMoreBtn.innerHTML = "Xem thêm ▾";
-    }
-
-});
