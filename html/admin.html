@@ -22,8 +22,8 @@
             <div class="logo">
                 <img src="../img/logo1.jpg" alt="logo">
             </div>
-            <div class="log-out">
-                <a href="../html/home.html">Đăng xuất</a>
+            <div class="log-out" id="logoutBtn">
+                <span>Đăng xuất</span>
                 <i class="bx bx-arrow-out-right-square-half"></i>
             </div>
         </header>
@@ -177,5 +177,17 @@
             </div>
         </footer>
     </div>
+
+    <script>
+    document.getElementById("logoutBtn").addEventListener("click", logoutAdmin);
+
+    function logoutAdmin() {
+        localStorage.removeItem("isLogin");
+        localStorage.removeItem("username");
+        localStorage.removeItem("searchKeyword");
+
+        window.location.href = "home.html";
+    }
+    </script>
 </body>
 </html>

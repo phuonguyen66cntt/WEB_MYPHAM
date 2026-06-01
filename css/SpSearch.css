@@ -629,3 +629,36 @@ main{
     background: #ffffff;
     padding-left: 25px;
 }
+
+.hidden-pr{
+    display: none;
+}
+
+.hidden-pr.show{
+    display: block;
+}
+
+.see-more{
+    cursor: pointer;
+    color: #ee7ca6;
+    margin-top: 10px;
+}
+
+.hidden-place{
+    display: none;
+    flex-direction: column;
+}
+
+.hidden-place.show{
+    display: flex;
+}
+
+.filter-item{
+    display: block;
+    margin: 5px 0;
+}
+
+.hidden-pr a{
+    color: #000000;
+    text-decoration: none;
+}

@@ -181,7 +181,14 @@ function loginTK() {
         localStorage.setItem("isLogin", "true");
         localStorage.setItem("username", username);
 
-        window.location.href = "tkdadangnhap.html";
+        // Nếu đăng nhập từ tìm kiếm
+        let keyword = localStorage.getItem("searchKeyword");
+
+        if(keyword){
+            window.location.href = "SpSearch.html";
+        }else{
+            window.location.href = "tkdadangnhap.html";
+        }
 
     }else{
 
@@ -189,7 +196,7 @@ function loginTK() {
 
     }
 
-}   
+}
 
 function registerTK() {
 
@@ -257,3 +264,45 @@ function logout() {
 
     window.location.href = "home.html";
 }
+
+// Tìm kiếm sản phẩm
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("searchInput");
+
+    searchInput.addEventListener("keypress", function (e) {
+
+        if (e.key === "Enter") {
+
+            const keyword = searchInput.value.trim();
+
+            if (keyword === "") {
+                alert("Vui lòng nhập từ khóa tìm kiếm!");
+                return;
+            }
+
+            // Kiểm tra đăng nhập
+            const isLogin = localStorage.getItem("isLogin");
+
+            if (isLogin !== "true") {
+
+                alert("Vui lòng đăng nhập để tìm kiếm sản phẩm!");
+
+                document.querySelector(".login-overlay").classList.add("active");
+
+                // Lưu từ khóa để tìm lại sau khi đăng nhập
+                localStorage.setItem("searchKeyword", keyword);
+
+                return;
+            }
+
+            // Đã đăng nhập -> lưu từ khóa và chuyển trang
+            localStorage.setItem("searchKeyword", keyword);
+            window.location.href = "SpSearch.html";
+        }
+
+    });
+
+});
+
+

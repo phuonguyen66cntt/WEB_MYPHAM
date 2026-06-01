@@ -19,32 +19,22 @@ window.addEventListener("DOMContentLoaded", () => {
     if (isLogin === "true") {
 
         accountMenu.innerHTML = `
-            <p class="open-login">Đăng nhập</p>
-            <p class="open-register">Đăng ký</p>
-            <p class="open-admin">Admin</p>
-        `;
-           
-
-    } else {
-        accountMenu.innerHTML = `
             <p onclick="goProfile()">Tài khoản của tôi</p>
             <p onclick="logout()">Đăng xuất <i class="bx bx-arrow-out-right-square-half"></i></p>
         `;
-        
-
-        document.querySelector(".open-login")?.addEventListener("click", () => {
-            document.querySelector(".login-overlay").classList.add("active");
-        });
-
-        document.querySelector(".open-register")?.addEventListener("click", () => {
-            document.querySelector(".register-overlay").classList.add("active");
-        });
-
-        document.querySelector(".open-admin")?.addEventListener("click", () => {
-            document.querySelector(".admin-overlay").classList.add("active");
-        });
     }
 });
+
+function goProfile() {
+    window.location.href = "tkdadangnhap.html";
+}
+
+function logout() {
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("username");
+    localStorage.removeItem("searchKeyword");
+    window.location.href = "home.html";
+}
 
 function goProfile() {
     window.location.href = "tkdadangnhap.html";
@@ -64,3 +54,22 @@ function logout() {
 
     window.location.href = "home.html";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".search input").value = "";
+});
+
+const seeMoreBtn = document.querySelector(".see-more");
+const hiddenPlace = document.querySelector(".filter-group .hidden-pr");
+
+seeMoreBtn.addEventListener("click", () => {
+
+    hiddenPlace.classList.toggle("show");
+
+    if(hiddenPlace.classList.contains("show")){
+        seeMoreBtn.innerHTML = "Thu gọn ▲";
+    }else{
+        seeMoreBtn.innerHTML = "Xem thêm ▾";
+    }
+
+});
