@@ -159,7 +159,7 @@ function loginAdmin() {
 
         
         // Lưu thông tin nếu cần
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", user);
         localStorage.setItem("isLogin", "true");
 
         window.location.href = "admin.html";

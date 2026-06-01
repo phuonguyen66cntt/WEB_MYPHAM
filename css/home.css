@@ -1127,3 +1127,8 @@ html{
 .account-sidebar p i{
     font-size: 18px;
 }
+
+.product-link{
+    text-decoration: none;
+    color: inherit;
+}

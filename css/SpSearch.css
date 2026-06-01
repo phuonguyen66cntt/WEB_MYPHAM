@@ -614,3 +614,18 @@ main{
     text-decoration: none;
     color: inherit;
 }
+
+.account-sidebar a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    color: #ff81a5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.account-sidebar a:hover{
+    background: #ffffff;
+    padding-left: 25px;
+}
