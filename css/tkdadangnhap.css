@@ -82,6 +82,100 @@ html {
     cursor: pointer;
 }
 
+/* Tìm kiếm */
+.search-dropdown{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.search:focus-within .search-dropdown{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-section{
+    margin-bottom: 20px;
+}
+
+.search-section h4{
+    margin-bottom: 15px;
+    color: #ff81a5;
+}
+
+.search-history{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.search-history p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-history p:hover{
+    padding-left: 5px;
+    color: #ff81a5;
+}
+
+.suggest-product{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.suggest-item{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.suggest-item:hover{
+    transform: translateX(5px);
+}
+
+.suggest-item img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.suggest-info .name{
+    margin-bottom: 5px;
+}
+
+.suggest-info span{
+    color: #ff81a5;
+    font-weight: bold;
+}
+.box-i i{
+    color: white;
+    font-size: 20px;
+}
+
+.box-i:hover{
+    cursor: pointer;
+}
+
 .cart {
     display: flex;
     align-items: center;
