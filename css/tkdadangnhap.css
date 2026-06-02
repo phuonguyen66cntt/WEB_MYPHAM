@@ -304,6 +304,7 @@ html {
     grid-template-columns: 75% 25%;
 }
 
+
 .info-left h2 {
     margin-bottom: 40px;
     font-size: 26px;
@@ -633,9 +634,7 @@ html {
 }
 
 
-/* ===================================================
-   RESPONSIVE
-   =================================================== */
+/* RESPONSIVE */
 
 @media (max-width: 1200px) {
     .main {
@@ -648,6 +647,33 @@ html {
 }
 
 @media (max-width: 900px) {
+
+    /* 1. Ép tab hồ sơ chuyển về 1 cột duy nhất thay vì 75% 25% */
+    #tab-hoso {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    /* 2. Đẩy phần ảnh đại diện lên trên cùng cho cân đối */
+    .profile-right {
+        order: -1; /* Đưa ảnh lên đầu */
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* 3. Cho form nhập liệu giãn rộng 100% không gian */
+    .info-left {
+        width: 100%;
+    }
+
+    /* 4. Sửa lại các ô input để nó tự scale theo màn hình điện thoại */
+    .info input[type="text"], 
+    .info input[type="email"] {
+        width: 100%; /* Thay vì 60% cố định, cho nó chiếm hết hàng */
+        box-sizing: border-box;
+    }
+
+
     .main {
         padding: 30px 24px;
         grid-template-columns: 1fr;
@@ -684,11 +710,12 @@ html {
     }
 
     .main-right {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
+        grid-template-columns: 75% 25%;
     }
 
     .profile-right {
-        order: -1;
+        order: 0;
         margin-bottom: 20px;
     }
 
@@ -710,7 +737,6 @@ html {
 }
 
 @media (max-width: 600px) {
-    /* HEADER FIX */
     .header {
         height: auto;
         padding: 10px 12px;
@@ -761,9 +787,6 @@ html {
         align-items: flex-start;
     }
 
-    .menu-item p {
-        font-size: 13px;
-    }
 
     .info {
         grid-template-columns: 1fr;
@@ -791,3 +814,4 @@ html {
         padding: 24px 16px;
     }
 }
+
