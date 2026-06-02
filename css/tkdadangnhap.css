@@ -188,10 +188,13 @@ html {
     color: #ff81a5;
 }
 
-.menu-item:first-child {
+/*Ô nào đang được chọn sẽ giữ nền hồng chữ trắng*/
+.menu-item.active {
     color: #ff81a5;
 }
 
+
+/* TAB HỒ SƠ */
 /* Cột phải */
 .main-right {
     display: grid;
@@ -199,6 +202,12 @@ html {
     background-color: #ff81a56d;
     padding: 20px;
     border-radius: 10px;
+}
+
+#tab-hoso {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 75% 25%;
 }
 
 .info-left h2 {
@@ -211,6 +220,16 @@ html {
     grid-template-columns: 160px 1fr;
     margin-bottom: 30px;
     align-items: center;
+}
+
+.info input[type="text"],.info input[type="email"] {
+    width: 60%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    outline: none;
+    background-color: #fff;
 }
 
 .info span {
@@ -238,11 +257,13 @@ html {
 .profile-right button {
     width: 120px;
     height: 40px;
-    border: 1px solid #ff81a5;
-    background: #fff;
+    background-color: #ff81a5;
+    color:#f5f5f5;
     border-radius: 20px;
     cursor: pointer;
+    border:none;
 }
+
 
 .save {
     grid-column: 1 / -1;
@@ -255,11 +276,198 @@ html {
 .save-btn {
     width: 120px;
     height: 45px;
-    border: 1px solid #ff81a5;
+    background-color: #ff81a5;
+    color:#f5f5f5;
     border-radius: 20px;
-    background: white;
     cursor: pointer;
+    border:none;
+    display: block;        
+    margin: 10px auto 0;
 }
+
+
+/* ===== TAB THÔNG BÁO & CÀI ĐẶT ===== */
+#tab-thongbao,#tab-caidat {
+    grid-column: 1 / -1;
+    padding: 10px;
+}
+
+#tab-thongbao h2,#tab-caidat h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.chitiet-tb {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Khung bo góc chung cho cả 2 ô */
+.capnhathang,.khuyenmai {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 10px;
+}
+
+/* Tiêu đề nhóm */
+.tb-hang-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Xem thêm */
+.xem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+.xemthem {
+    font-size: 14px;
+    color: gray;
+    transition: 0.2s;
+}
+
+.xem i {
+    font-size: 12px;
+    color: gray;
+}
+
+.xem:hover .xemthem,
+.xem:hover i {
+    color: #ff81a5;
+}
+
+/* Nội dung đơn hàng */
+.donhang {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.donhang p:first-child {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.donhang p:last-child {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* Ảnh sản phẩm */
+.img-hang {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.img-hang img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Khuyến mãi */
+.tb-khuyenmai {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tb-khuyenmai p:first-child {
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+}
+
+.tb-khuyenmai p:last-child {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* ===== CÀI ĐẶT ===== */
+.chitiet-caidat {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.caidat-tk,.caidat-hotro {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* chỉ lấy 2 p đầu là Đặt lại mật khẩu và Hỗ trợ (trực tiếp từ phần tử cha) */
+.caidat-tk > p,
+.caidat-hotro > p {
+    font-size: 13px;
+    font-weight: 600;
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+/* Mỗi dòng trong cài đặt */
+.datlaimk p,
+.tt-hotro p {
+    font-size: 15px;
+    color: #222;
+    padding: 12px 0;
+    border-bottom: 0.5px solid #f0f0f0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.datlaimk p:last-child,
+.tt-hotro p:last-child {
+    border-bottom: none;
+}
+
+.datlaimk p:hover,
+.tt-hotro p:hover {
+    color: #ff81a5;
+    padding-left: 6px;
+}
+
+
+/* Nút đăng xuất */
+.logout-btn {
+    width: 130px;
+    height: 42px;
+    background-color: #ff81a5;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    display: block;     
+    margin: 16px auto 0;
+}
+
+
 
 /*FOOTER*/
 .footer {
@@ -329,6 +537,7 @@ html {
     color: #ff81a5;
     transform: translateY(-3px);
 }
+
 
 /* ===================================================
    RESPONSIVE

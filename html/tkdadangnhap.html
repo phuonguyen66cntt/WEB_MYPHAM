@@ -44,32 +44,32 @@
         <!-- cột trái -->
         <div class="main-left">
             <div class="avatar">
-                <img src="../img/avatar.jpg" width="80%">
+                <img src="../img/avatar.jpg" width="80%" id="leftAvatar">
                 <div>
-                    <h4>Hồ Ngọc Hà</h4>
-                    <div class="suahoso">
+                    <h4 id="leftUsername">Hồ Ngọc Hà</h4>
+                    <div class="suahoso" onclick="showTab('hoso', document.querySelector('.menu-item'))">
                         <i class="bx bx-pencil"></i>
                         <p>Sửa hồ sơ</p>
                     </div>
                 </div>
             </div>
             <ul class="menu">
-                <li class="menu-item active">
+                <li class="menu-item" onclick="showTab('hoso', this)">
                     <i class="bx bx-pencil"></i>
                     <p>Tài khoản của tôi</p>
                 </li>
 
-                <li class="menu-item active">
+                <li class="menu-item" onclick="showTab('donmua', this)">
                     <i class="bx bx-clipboard-detail"></i>
                     <p>Đơn mua</p>
                 </li>
 
-                <li class="menu-item active">
+                <li class="menu-item" onclick="showTab('thongbao', this)">
                     <i class="bx bx-bell"></i>
                     <p>Thông báo</p>
                 </li>
 
-                <li class="menu-item active">
+                <li class="menu-item" onclick="showTab('caidat', this)">
                     <i class="bx bx-cog"></i>
                     <p>Cài đặt</p>
                 </li>
@@ -78,39 +78,103 @@
 
         <!-- cột phải -->
         <div class="main-right">
-            <!-- bên trái của cột phải -->
-            <div class="info-left">
-                <h2>Hồ Sơ Của Tôi</h2>
 
-                <div class="info">
-                    <span>Tên đăng nhập</span>
-                    <p>Hồ Ngọc Hà</p>
+            <!-- TAB: TÀI KHOẢN CỦA TÔI -->
+            <div class="tab-content" id="tab-hoso">
+                <!-- bên trái của cột phải -->
+                <div class="info-left">
+                    <h2>Hồ Sơ Của Tôi</h2>
+
+                    <div class="info">
+                        <span>Tên đăng nhập</span>
+                        <input type="text" id="input-username" value="Hồ Ngọc Hà">
+                    </div>
+
+                    <div class="info">
+                        <span>Email</span>
+                        <input type="email" id="input-email" value="hnh@gmail.com">
+                    </div>
+
+                    <div class="info">
+                        <span>Số điện thoại</span>
+                        <input type="text" id="input-phone" value="0987654321">
+                    </div>
+
+                    <div class="info">
+                        <span>Địa chỉ</span>
+                        <input type="text" id="input-address" value="Quận Hoàn Kiếm, Hà Nội">
+                    </div>
                 </div>
 
-                <div class="info">
-                    <span>Email</span>
-                    <p>hnh@gmail.com</p>
+                <!--bên phải của cột phải -->
+                <div class="profile-right">
+                    <img src="../img/avatar.jpg" id="profileAvatar">
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <button type="button" onclick="document.getElementById('fileInput').click()">Chọn ảnh</button>
                 </div>
 
-                <div class="info">
-                    <span>Số điện thoại</span>
-                    <p>0987654321</p>
-                </div>
-
-                <div class="info">
-                    <span>Địa chỉ</span>
-                    <p>Quận Hoàn Kiếm, Hà Nội</p>
+                <div class="save">
+                    <button class="save-btn" onclick="saveProfile()">Lưu</button>
                 </div>
             </div>
 
-            <!--bên phải của cột phải -->
-            <div class="profile-right">
-                <img src="../img/avatar.jpg">
-                <button>Chọn ảnh</button>
+            <!-- TAB: THÔNG BÁO -->
+            <div class="tab-content" id="tab-thongbao" style="display:none;">
+                    <h2>Thông Báo</h2>
+                    <div class="chitiet-tb">
+                        <!-- Cập nhật đơn hàng -->
+                        <div class="capnhathang">
+                            <p class="tb-hang-title">Cập nhật đơn hàng</p>
+                            <div class="xem">
+                                <p class="xemthem">Xem thêm</p>
+                                <i class="fa fa-chevron-right"></i>
+                            </div>
+                            <div class="donhang">
+                                <p>Giao hàng thành công</p>
+                                <p>12:37 29-05-2026</p>
+                            </div>
+                            <div class="img-hang">
+                                <img src="../img/img10.jpg" width="80%">
+                            </div>
+                        </div>
+                        <!-- Khuyến mãi -->
+                        <div class="khuyenmai">
+                            <p class="tb-hang-title">Khuyến mãi</p>
+                             <div class="xem">
+                                <p class="xemthem">Xem thêm</p>
+                                <i class="fa fa-chevron-right"></i>
+                            </div>
+                            <div class="tb-khuyenmai">
+                                <p>Giảm 20% cho đơn hàng từ 300k hôm nay</p>
+                                <p>13:09 28-05-2026</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
-            <div class="save">
-                <button class="save-btn">Lưu</button>
+            <!-- TAB: CÀI ĐẶT -->
+            <div class="tab-content" id="tab-caidat" style="display:none;">
+                <h2>Cài đặt</h2>
+                <div class="chitiet-caidat">
+                    <!-- TÀI KHOẢN -->
+                    <div class="caidat-tk">
+                        <p>Tài khoản</p>
+                        <div class="datlaimk" onclick="window.location.href='matkhau.html'">
+                            <p>Đặt lại mật khẩu</p>
+                            <p>Địa chỉ</p>
+                        </div>
+                    </div>
+                    <!-- HỖ TRỢ -->
+                    <div class="caidat-hotro">
+                        <p>Hỗ Trợ</p>
+                        <div class="tt-hotro">
+                            <p>Trung tâm hỗ trợ</p>
+                            <p>Chính sách và điều khoản</p>
+                            <p>Yêu cầu xóa tài khoản</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="alert('Đã đăng xuất!')">Đăng xuất</button>
             </div>
         </div>
     </main>
@@ -160,5 +224,8 @@
         </div>
      </footer>
    </div>
+
+   <script src="../js/tkdadangnhap.js"></script>
+
 </body>
 </html>
