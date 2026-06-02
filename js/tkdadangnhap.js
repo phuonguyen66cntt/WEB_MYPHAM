@@ -16,17 +16,33 @@ function showTab(tabName, clickedItem) {
     if (clickedItem) clickedItem.classList.add('active');
 }
 
-// Mặc định hiện tab hồ sơ khi load trang
-window.addEventListener('DOMContentLoaded', () => {
-    showTab('hoso', document.querySelector('.menu-item'));
 
-    // Đọc ?tab=... trên URL và mở đúng tab
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Đọc tham số ?tab=... trên URL
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
+
     if (tab) {
-        const menuItem = document.querySelector(`.menu-item[onclick*="${tab}"]`);
+        // Tìm menu item dựa trên thuộc tính onclick chứa tên tab (ví dụ: onclick="showTab('caidat', this)")
+        let menuItem = document.querySelector(`.menu-item[onclick*="${tab}"]`);
+        
+        // Nếu không tìm thấy bằng onclick, tìm thử bằng cách quét text hiển thị bên trong
+        if (!menuItem) {
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                if (item.innerHTML.toLowerCase().includes(tab.toLowerCase()) || 
+                   (tab === 'caidat' && item.innerHTML.includes('Cài đặt'))) {
+                    menuItem = item;
+                }
+            });
+        }
+
+        // Kích hoạt tab được truyền từ URL
         showTab(tab, menuItem);
-}
+    } else {
+        // 2. Nếu không có tham số trên URL, mặc định hiện tab hồ sơ và kích hoạt menu item đầu tiên
+        showTab('hoso', document.querySelector('.menu-item'));
+    }
 });
 
 // ===== ĐỔI ẢNH =====
@@ -59,3 +75,4 @@ function saveProfile() {
 
     console.log({ username: updatedUsername, email: updatedEmail, phone: updatedPhone, address: updatedAddress });
 }
+
