@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.U.V - Đơn mua</title>
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/orders.css">
+</head>
+<body>
+
+ <!-- HEADER -->
+    <header class="header">
+            <div class="left-h">
+                <div class="menu-icon">
+                    <i class="bx bx-list"></i>
+                </div>
+                <div class="logo" onclick="window.location.href='home.html'">
+                    <img src="../img/logo1.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <div class="box-i">
+                    <i class="bx bx-search"></i>
+                </div>
+
+                <!-- SEARCH DROPDOWN -->
+                <div class="search-dropdown">
+                    <!-- Đã tìm -->
+                    <div class="search-section">
+                        <h4>Tìm kiếm gần đây</h4>
+                        <div class="search-history">
+                            <p><i class='bx bx-history'></i> Son dưỡng</p>
+                            <p><i class='bx bx-history'></i> Serum vitamin C</p>
+                            <p><i class='bx bx-history'></i> Kem chống nắng</p>
+                        </div>
+                    </div>
+                    <!-- Đề xuất -->
+                    <div class="search-section">
+                        <h4>Đề xuất cho bạn</h4>
+                        <div class="suggest-product">
+                            <div class="suggest-item">
+                                <img src="../img/img8.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Son Tint Romand</p>
+                                    <span>200.000đ</span>
+                                </div>
+                            </div>
+                            <div class="suggest-item">
+                                <img src="../img/img9.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Serum Caryophy</p>
+                                    <span>350.000đ</span>
+                                </div>
+                            </div>
+                            <div class="suggest-item">
+                                <img src="../img/img10.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Kem dưỡng ẩm</p>
+                                    <span>180.000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-h">
+                <div class="cart">
+                    <i class="bx bx-cart" ></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                    <div class="cart" onclick="window.location.href='cart.html'" style="cursor: pointer;"></div>
+                    <p>Giỏ hàng</p>
+                </div>
+                <div class="item account-item">
+                    <i class='bx bx-user'></i>
+                    <p>Tài khoản</p>
+                    <div class="account-sidebar" id="accountMenu">
+                        <p class="open-login">Đăng nhập</p>
+                        <p class="open-register">Đăng ký</p>
+                        <p class="open-admin">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+<div class="orders-layout">
+
+    <!-- SIDEBAR -->
+    <div class="main-left">
+
+        <div class="avatar">
+            <img src="/img/avatar.jpg" alt="avatar">
+
+            <div>
+                <h4 id="sidebarName">Hồ Ngọc Hà</h4>
+
+                <div class="suahoso">
+                    <i class="bx bx-pencil"></i>
+                    <p>Sửa hồ sơ</p>
+                </div>
+            </div>
+        </div>
+
+        <ul class="menu">
+
+            <li class="menu-item">
+                <a href="profile.html">
+                    <i class="bx bx-user"></i>
+                    <p>Tài khoản của tôi</p>
+                </a>
+            </li>
+
+            <li class="menu-item active">
+                <a href="orders.html">
+                    <i class="bx bx-clipboard-detail"></i>
+                    <p>Đơn mua</p>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="notification.html">
+                    <i class="bx bx-bell"></i>
+                    <p>Thông báo</p>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="setting.html">
+                    <i class="bx bx-cog"></i>
+                    <p>Cài đặt</p>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- NỘI DUNG -->
+    <div class="orders-main">
+        <div class="tabs-scroll">
+            <div class="tabs-row">
+                <button class="tab-btn active" onclick="filterOrders('all', this)">Tất cả</button>
+                <button class="tab-btn" onclick="filterOrders('confirmed', this)">Chờ xác nhận</button>
+                <button class="tab-btn" onclick="filterOrders('pickup', this)">Chờ lấy hàng</button>
+                <button class="tab-btn" onclick="filterOrders('shipping', this)">Đang giao</button>
+                <button class="tab-btn" onclick="filterOrders('delivered', this)">Đã giao</button>
+                <button class="tab-btn" onclick="filterOrders('cancelled', this)">Đã hủy</button>
+            </div>
+        </div>
+
+        <div id="ordersList"></div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+        <h3 id="modalTitle">Xác nhận</h3>
+        <p id="modalMsg">Bạn có chắc không?</p>
+        <div class="modal-actions">
+            <button class="btn-dismiss" onclick="closeModal()">Hủy</button>
+            <button class="btn-confirm" id="modalConfirmBtn">Xác nhận</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast-msg" id="toastMsg"></div>
+
+<script src="/js/orders.js"></script>
+
+   <footer class="footer">
+            <div class="footer-container">
+                <!-- LOGO -->
+                <div class="footer-col footer-logo">
+                    <img src="/img/logo1.jpg" alt="logo">
+                </div>
+                <!-- GIỚI THIỆU -->
+                <div class="footer-col">
+                    <h4>Giới thiệu</h4>
+                    <ul>
+                        <li>Về L.U.V</li>
+                        <li>Chính sách bảo mật</li>
+                        <li>Điều khoản dịch vụ</li>
+                        <li>Hướng dẫn mua hàng</li>
+                    </ul>
+                </div>
+                <!-- LIÊN HỆ -->
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <ul>
+                        <li>123 Đường ABC, Khánh Hòa</li>
+                        <li>0123 456 789</li>
+                        <li>info@luv.com</li>
+                    </ul>
+                </div>
+                <!-- MẠNG XÃ HỘI -->
+                <div class="footer-col">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-list">
+                        <a href="#">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                        <i class="fa fa-google" aria-hidden="true"></i>
+                        </a>
+                        <a href="#">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.U.V - Giỏ hàng</title>
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="icon" href="/img/logo.jpg">
+    <!-- Boxicons -->
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    
+    <!-- HEADER -->
+    <header class="header">
+            <div class="left-h">
+                <div class="menu-icon">
+                    <i class="bx bx-list"></i>
+                </div>
+                <div class="logo" onclick="window.location.href='home.html'">
+                    <img src="/img/logo1.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <div class="box-i">
+                    <i class="bx bx-search"></i>
+                </div>
+
+                <!-- SEARCH DROPDOWN -->
+                <div class="search-dropdown">
+                    <!-- Đã tìm -->
+                    <div class="search-section">
+                        <h4>Tìm kiếm gần đây</h4>
+                        <div class="search-history">
+                            <p><i class='bx bx-history'></i> Son dưỡng</p>
+                            <p><i class='bx bx-history'></i> Serum vitamin C</p>
+                            <p><i class='bx bx-history'></i> Kem chống nắng</p>
+                        </div>
+                    </div>
+                    <!-- Đề xuất -->
+                    <div class="search-section">
+                        <h4>Đề xuất cho bạn</h4>
+                        <div class="suggest-product">
+                            <div class="suggest-item">
+                                <img src="../img/img8.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Son Tint Romand</p>
+                                    <span>200.000đ</span>
+                                </div>
+                            </div>
+                            <div class="suggest-item">
+                                <img src="../img/img9.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Serum Caryophy</p>
+                                    <span>350.000đ</span>
+                                </div>
+                            </div>
+                            <div class="suggest-item">
+                                <img src="../img/img10.jpg" alt="">
+                                <div class="suggest-info">
+                                    <p class="name">Kem dưỡng ẩm</p>
+                                    <span>180.000đ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-h">
+                <div class="cart">
+                    <i class="bx bx-cart" ></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                    <p>Giỏ hàng</p>
+                </div>
+                <div class="item account-item">
+                    <i class='bx bx-user'></i>
+                    <p>Tài khoản</p>
+                    <div class="account-sidebar" id="accountMenu">
+                        <p class="open-login">Đăng nhập</p>
+                        <p class="open-register">Đăng ký</p>
+                        <p class="open-admin">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <main class="container">
+        <!-- STEPS BAR -->
+        <div class="steps-bar" id="stepsBar">
+            <div class="step active" id="step1"><div class="step-circle">1</div><div class="step-label">Giỏ hàng</div></div>
+            <div class="step" id="step2"><div class="step-circle">2</div><div class="step-label">Thanh toán</div></div>
+            <div class="step" id="step3"><div class="step-circle">3</div><div class="step-label">Xác nhận</div></div>
+            <div class="step" id="step4"><div class="step-circle">4</div><div class="step-label">Theo dõi</div></div>
+        </div>
+
+        <!-- PAGE 1: GIỎ HÀNG -->
+        <div class="page-section active" id="pageCart">
+            <div class="cart-layout">
+                <div class="card">
+                    <h3><i class="bx bx-cart"></i> Sản phẩm trong giỏ</h3>
+                    <div id="cartItemsList"></div>
+                    <div class="empty-cart" id="emptyCart" style="display:none;">
+                        <i class="bx bx-cart"></i>
+                        <h3>Giỏ hàng trống</h3>
+                        <p>Vào trang sản phẩm để thêm vào giỏ nhé!</p>
+                        <a href="/html/home.html" class="btn-pink" style="display:inline-block;margin-top:12px;padding:10px 24px;background:#ff81a5;color:white;border-radius:20px;text-decoration:none;">Mua sắm ngay</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>Tóm tắt đơn hàng</h3>
+                        <div class="promo-row">
+                            <input type="text" placeholder="Mã giảm giá..." id="promoInput">
+                            <button onclick="applyPromo()">Áp dụng</button>
+                        </div>
+                        <div class="summary-row"><span>Tạm tính</span><span id="subtotalTxt">0đ</span></div>
+                        <div class="summary-row"><span>Giảm giá</span><span id="discountTxt" style="color:#ff81a5;">-0đ</span></div>
+                        <div class="summary-row"><span>Phí vận chuyển</span><span id="shipFeeTxt">Chọn ở bước sau</span></div>
+                        <div class="summary-row total"><span>Tổng cộng</span><span id="totalTxt">0đ</span></div>
+                        <button class="checkout-btn" id="checkoutBtn" onclick="goToStep2()">Tiến hành thanh toán →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: THANH TOÁN -->
+        <div class="page-section" id="pageCheckout">
+            <div class="cart-layout">
+                <div>
+                    <div class="card" style="margin-bottom:20px;">
+                        <h3><i class="bx bx-map"></i> Thông tin giao hàng</h3>
+                        <div class="form-grid">
+                            <div class="form-group"><label>Họ và tên *</label><input type="text" id="fullname" placeholder="Nguyễn Văn A"></div>
+                            <div class="form-group"><label>Số điện thoại *</label><input type="text" id="phone" placeholder="0123 456 789"></div>
+                            <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="email@luv.com"></div>
+                            <div class="form-group"><label>Tỉnh/Thành phố</label>
+                                <select id="city">
+                                    <option>-- Chọn tỉnh/thành --</option>
+                                    <option>Khánh Hòa</option><option>Hà Nội</option><option>TP. Hồ Chí Minh</option>
+                                    <option>Đà Nẵng</option><option>Cần Thơ</option><option>Bình Dương</option>
+                                </select>
+                            </div>
+                            <div class="form-group full"><label>Địa chỉ cụ thể *</label><input type="text" id="address" placeholder="Số nhà, tên đường, phường/xã..."></div>
+                            <div class="form-group full"><label>Ghi chú</label><textarea id="note" placeholder="Ghi chú (không bắt buộc)..."></textarea></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3><i class="bx bx-package"></i> Phương thức vận chuyển</h3>
+                        <div class="ship-options">
+                            <label class="ship-opt selected" onclick="selectShip(this, 30000)">
+                                <input type="radio" name="ship" checked>
+                                <div class="ship-opt-info"><strong>Giao hàng tiêu chuẩn</strong><small>3-5 ngày làm việc</small></div>
+                                <span class="ship-opt-price">30.000đ</span>
+                            </label>
+                            <label class="ship-opt" onclick="selectShip(this, 50000)">
+                                <input type="radio" name="ship">
+                                <div class="ship-opt-info"><strong>Giao hàng nhanh</strong><small>1-2 ngày làm việc</small></div>
+                                <span class="ship-opt-price">50.000đ</span>
+                            </label>
+                            <label class="ship-opt" onclick="selectShip(this, 80000)">
+                                <input type="radio" name="ship">
+                                <div class="ship-opt-info"><strong>Giao hàng hỏa tốc</strong><small>Trong ngày (nội thành)</small></div>
+                                <span class="ship-opt-price">80.000đ</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:20px;">
+                        <h3><i class="bx bx-credit-card"></i> Thanh toán</h3>
+                        <div class="pay-methods">
+                            <div class="pay-method selected" onclick="selectPay(this)">💵 Tiền mặt (COD)</div>
+                            <div class="pay-method" onclick="selectPay(this)">🏦 Chuyển khoản</div>
+                            <div class="pay-method" onclick="selectPay(this)">💳 Thẻ tín dụng</div>
+                            <div class="pay-method" onclick="selectPay(this)">💜 Ví MoMo</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>Đơn hàng của bạn</h3>
+                        <div id="checkoutItemsPreview"></div>
+                        <div class="summary-row" style="margin-top:14px;"><span>Tạm tính</span><span id="subtotalTxt2">0đ</span></div>
+                        <div class="summary-row"><span>Giảm giá</span><span id="discountTxt2" style="color:#ff81a5;">-0đ</span></div>
+                        <div class="summary-row"><span>Phí vận chuyển</span><span id="shipFeeTxt2">30.000đ</span></div>
+                        <div class="summary-row total"><span>Tổng cộng</span><span id="totalTxt2">0đ</span></div>
+                        <div style="display:flex;gap:10px;margin-top:14px;">
+                            <button class="btn-outline" style="flex:1;padding:12px;" onclick="goToStep1()">← Quay lại</button>
+                            <button class="checkout-btn" style="flex:2;margin-top:0;" onclick="placeOrder()">Đặt hàng ngay →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: XÁC NHẬN (Khôi phục cấu hình chuẩn cấu trúc của bạn) -->
+        <div class="page-section" id="pageConfirm">
+            <div class="order-confirm">
+                <div class="confirm-icon">🎉</div>
+                <h2 class="confirm-title">Đặt hàng thành công!</h2>
+                <p class="confirm-sub">Cảm ơn bạn đã tin tưởng L.U.V</p>
+                <div class="order-info-box">
+                    <div class="order-id" id="confirmOrderId">Đơn hàng #LUV0001</div>
+                    <div class="order-date" id="confirmDate"></div>
+                </div>
+                <div class="card" style="max-width:600px;margin:20px auto;">
+                    <h3>Sản phẩm đã đặt</h3>
+                    <div id="confirmItemsList"></div>
+                    <div class="summary-row" style="margin-top:14px;"><span>Tạm tính</span><span id="confirmSubtotal"></span></div>
+                    <div class="summary-row"><span>Giảm giá</span><span id="confirmDiscount" style="color:#ff81a5;"></span></div>
+                    <div class="summary-row"><span>Phí vận chuyển</span><span id="confirmShip"></span></div>
+                    <div class="summary-row total"><span>Tổng cộng</span><span id="confirmTotal"></span></div>
+                    <div style="margin-top:14px;padding:12px;background:#fff0f5;border-radius:10px;font-size:13px;text-align:left;" id="confirmAddress"></div>
+                </div>
+                <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;">
+                    <button class="btn-pink" onclick="goToTracking()">Theo dõi đơn hàng →</button>
+                    <button class="btn-outline" onclick="window.location.href='orders.html'">Xem đơn mua</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: THEO DÕI -->
+        <div class="page-section" id="pageTracking">
+            <div class="order-track">
+                <div class="order-info-box">
+                    <div class="order-id" id="trackOrderId">Đơn hàng #LUV0001</div>
+                    <div class="order-date" id="trackDate"></div>
+                    <div style="margin-top:14px;">
+                        <span style="background:#fff0f5;color:#ff81a5;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;" id="trackStatus">🔄 Đang xử lý</span>
+                    </div>
+                </div>
+                <div class="card" style="margin-bottom:20px;">
+                    <h3>Trạng thái vận chuyển</h3>
+                    <div class="track-timeline" id="trackTimeline"></div>
+                </div>
+                <div class="card">
+                    <h3>Sản phẩm đã đặt</h3>
+                    <div id="trackItemsList"></div>
+                </div>
+                <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;">
+                    <button class="btn-outline" onclick="simulateNextStep()">Mô phỏng bước tiếp</button>
+                    <button class="btn-pink" onclick="window.location.href='orders.html'">Quản lý đơn mua</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="loginPromptOverlay" style="position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:4000;opacity:0;visibility:hidden;transition:0.3s;">
+        <div style="background:white;border-radius:20px;padding:32px 28px;width:340px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.2);">
+            <div style="font-size:48px;margin-bottom:12px;">🔐</div>
+            <h3 style="color:#ff81a5;margin-bottom:10px;font-size:20px;">Bạn chưa đăng nhập</h3>
+            <p style="color:#777;font-size:14px;margin-bottom:24px;">Vui lòng đăng nhập hoặc đăng ký để tiến hành thanh toán.</p>
+            <div style="display:flex;gap:10px;justify-content:center;">
+                <button onclick="goToLogin()" style="padding:10px 22px;background:#ff81a5;color:white;border:none;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;">Đăng nhập</button>
+                <button onclick="goToRegister()" style="padding:10px 22px;background:white;border:1.5px solid #ff81a5;color:#ff81a5;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;">Đăng ký</button>
+                <button onclick="closeLoginPrompt()" style="padding:10px 16px;background:white;border:1.5px solid #ccc;color:#666;border-radius:20px;font-size:14px;cursor:pointer;">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN OVERLAY -->
+    <div class="login-overlay">
+        <div class="login-frame">
+            <span class="close-login">✕</span>
+            <h2>Đăng nhập</h2>
+            <input type="text" id="loginUser" placeholder="Tên đăng nhập">
+            <input type="password" id="loginPass" placeholder="Mật khẩu">
+            <div class="remember-me">
+                <label><input type="checkbox" id="remember"> Ghi nhớ đăng nhập</label>
+                <div class="mk"><p>Quên mật khẩu?</p></div>   
+            </div>
+            <button onclick="loginUser()">Đăng nhập</button>
+            <div class="link">
+                <span class="minus"><i class="bx bx-minus bx-rotate-180"></i></span>
+                <p>Hoặc</p>
+                <span class="minus"><i class="bx bx-minus bx-rotate-180"></i></span>
+            </div>
+            <div class="link-icon">
+                <i class="fa fa-google" aria-hidden="true"></i>             
+                <i class="fa fa-facebook-square" aria-hidden="true"></i>                
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER OVERLAY -->
+    <div class="register-overlay">
+        <div class="register-frame">
+            <span class="close-register">✕</span>
+            <h2>Đăng ký</h2>
+            <input type="text" id="regUser" placeholder="Tên đăng nhập">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="password" id="regPass" placeholder="Mật khẩu">
+            <button onclick="registerUser()">Đăng ký</button>
+        </div>
+    </div>
+
+    <!-- ADMIN OVERLAY -->
+    <div class="admin-overlay">
+        <div class="admin-frame">
+            <span class="close-admin">✕</span>
+            <h2>Admin</h2>
+            <input type="text" id="adminUser" placeholder="Tên tài khoản admin">
+            <input type="password" id="adminPass" placeholder="Mật khẩu">
+            <div class="remember-me"> 
+                <input type="checkbox" id="rememberAdmin"> 
+                <label for="rememberAdmin">Ghi nhớ đăng nhập</label>
+            </div>
+            <button onclick="loginAdmin()">Đăng nhập</button>
+        </div>
+    </div>
+
+    <!-- TOAST MESSAGE -->
+    <div class="toast-msg" id="toastMsg"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col footer-logo"><img src="/img/logo.jpg" alt="logo"></div>
+            <div class="footer-col">
+                <h4>Giới thiệu</h4>
+                <ul>
+                    <li>Về L.U.V</li>
+                    <li>Chính sách bảo mật</li>
+                    <li>Điều khoản dịch vụ</li>
+                    <li>Hướng dẫn mua hàng</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <ul>
+                    <li>123 Đường ABC, Khánh Hòa</li>
+                    <li>0123 456 789</li>
+                    <li>info@luv.com</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Theo dõi chúng tôi</h4>
+                <div class="social-list">
+                    <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="/js/cart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    // Xử lý ẩn/hiện Form Đăng nhập
+    const openLogin = document.querySelector(".open-login");
+    const loginOverlay = document.querySelector(".login-overlay");
+    const closeLogin = document.querySelector(".close-login");
+    if(openLogin) openLogin.addEventListener("click", function(){ loginOverlay.classList.add("active"); });
+    if(closeLogin) closeLogin.addEventListener("click", function(){ loginOverlay.classList.remove("active"); });
+    if(loginOverlay) loginOverlay.addEventListener("click", function(e){ if(e.target===loginOverlay) loginOverlay.classList.remove("active"); });
+
+    // Xử lý ẩn/hiện Form Đăng ký
+    const openRegister = document.querySelector(".open-register");
+    const registerOverlay = document.querySelector(".register-overlay");
+    const closeRegister = document.querySelector(".close-register");
+    if(openRegister) openRegister.addEventListener("click", function(){ registerOverlay.classList.add("active"); });
+    if(closeRegister) closeRegister.addEventListener("click", function(){ registerOverlay.classList.remove("active"); });
+    if(registerOverlay) registerOverlay.addEventListener("click", function(e){ if(e.target===registerOverlay) registerOverlay.classList.remove("active"); });
+
+    // Xử lý ẩn/hiện Form Admin
+    const openAdmin = document.querySelector(".open-admin");
+    const adminOverlay = document.querySelector(".admin-overlay");
+    const closeAdmin = document.querySelector(".close-admin");
+    if(openAdmin) openAdmin.addEventListener("click", function(){ adminOverlay.classList.add("active"); });
+    if(closeAdmin) closeAdmin.addEventListener("click", function(){ adminOverlay.classList.remove("active"); });
+    if(adminOverlay) adminOverlay.addEventListener("click", function(e){ if(e.target===adminOverlay) adminOverlay.classList.remove("active"); });
+
+    // Đóng popup nhắc nhở khi click ra ngoài vùng xám
+    document.getElementById('loginPromptOverlay').addEventListener('click', function(e){
+        if(e.target === this) closeLoginPrompt();
+    });
+
+    updateHeaderLogin();
+});
+
+// --- LOGIC ĐĂNG NHẬP / ĐĂNG KÝ NGƯỜI DÙNG  ---
+function showLoginPrompt() {
+    const overlay = document.getElementById('loginPromptOverlay');
+    if(overlay) {
+        overlay.style.opacity = '1';
+        overlay.style.visibility = 'visible';
+    }
+}
+function closeLoginPrompt() {
+    const overlay = document.getElementById('loginPromptOverlay');
+    if(overlay) {
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+    }
+}
+function goToLogin() {
+    closeLoginPrompt();
+    document.querySelector('.login-overlay').classList.add('active');
+}
+function goToRegister() {
+    closeLoginPrompt();
+    document.querySelector('.register-overlay').classList.add('active');
+}
+
+function loginUser() {
+    const user = document.getElementById('loginUser').value.trim();
+    const pass = document.getElementById('loginPass').value.trim();
+    if (user && pass) {
+        localStorage.setItem('isLogin', 'true');
+        localStorage.setItem('username', user);
+        document.querySelector('.login-overlay').classList.remove('active');
+        if(typeof showToast === 'function') showToast('Đăng nhập thành công! Chào ' + user + ' 👋');
+        updateHeaderLogin();
+        setTimeout(() => { if(typeof goToStep2 === 'function') goToStep2(); }, 800);
+    } else {
+        alert('Vui lòng nhập đầy đủ thông tin tài khoản!');
+    }
+}
+
+function registerUser() {
+    const user = document.getElementById('regUser').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const pass = document.getElementById('regPass').value.trim();
+    if (user && email && pass) {
+        localStorage.setItem('isLogin', 'true');
+        localStorage.setItem('username', user);
+        document.querySelector('.register-overlay').classList.remove('active');
+        if(typeof showToast === 'function') showToast('Đăng ký thành công! Chào ' + user + ' 🎉');
+        updateHeaderLogin();
+        setTimeout(() => { if(typeof goToStep2 === 'function') goToStep2(); }, 800);
+    } else {
+        alert('Vui lòng điền đầy đủ trường dữ liệu đăng ký!');
+    }
+}
+
+function updateHeaderLogin() {
+    const isLogin = localStorage.getItem('isLogin') === 'true';
+    const accountMenu = document.getElementById('accountMenu');
+    if (isLogin && accountMenu) {
+        const username = localStorage.getItem('username') || 'Thành viên';
+        accountMenu.innerHTML = `
+            <p onclick="window.location.href='tkdadangnhap.html'" style="cursor:pointer; font-weight:bold;">👤 ${username}</p>
+            <p onclick="logoutUser()" style="cursor:pointer; color:#999;">Đăng xuất</p>
+            <p class="open-admin" onclick="document.querySelector('.admin-overlay').classList.add('active')" style="border-top:1px solid #eee; padding-top:5px; margin-top:5px; color:#ff81a5; cursor:pointer;">Mở Admin</p>
+        `;
+    }
+}
+
+function logoutUser() {
+    localStorage.removeItem('isLogin');
+    localStorage.removeItem('username');
+    location.reload();
+}
+
+// --- LOGIC ĐĂNG NHẬP ĐỐI VỚI QUYỀN ADMIN ---
+function loginAdmin() {
+    var user = document.getElementById("adminUser") ? document.getElementById("adminUser").value : "";
+    var pass = document.getElementById("adminPass") ? document.getElementById("adminPass").value : "";
+    if(user === "admin" && pass === "123456"){
+        window.location.href = "admin.html";
+    } else {
+        alert("Sai tài khoản hoặc mật khẩu quyền quản trị!");
+    }
+}
+</script>
+</body>
+</html>
