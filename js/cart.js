@@ -42,13 +42,13 @@ function showToast(msg) {
 
 // ===== STEP NAVIGATION =====
 function setStep(n) {
-    [1,2,3,4].forEach(i => {
+    [1,2,3].forEach(i => {
         const s = document.getElementById('step'+i);
         s.classList.remove('active','done');
         if (i < n) s.classList.add('done');
         if (i === n) s.classList.add('active');
     });
-    ['pageCart','pageCheckout','pageConfirm','pageTracking'].forEach((id,i) => {
+    ['pageCart','pageCheckout','pageConfirm'].forEach((id,i) => {
         document.getElementById(id).classList.toggle('active', i+1 === n);
     });
 }
@@ -128,7 +128,7 @@ function goToStep2() {
     cart = getCart();
     if (cart.length === 0) { showToast('Giỏ hàng trống!'); return; }
 
-    // ✅ KIỂM TRA ĐĂNG NHẬP
+    // KIỂM TRA ĐĂNG NHẬP
     if (!isLoggedIn()) {
         // Hiện popup nhắc đăng nhập
         showLoginPrompt();
@@ -260,45 +260,6 @@ function renderConfirm() {
         </div>`
     ).join('');
 }
-
-function goToTracking() { setStep(4); renderTracking(); window.scrollTo(0,0); }
-
-// ===== PAGE 4: TRACKING =====
-function renderTracking() {
-    try { orderData = JSON.parse(localStorage.getItem('luv_order')) || orderData; } catch(e){}
-    const o = orderData;
-    document.getElementById('trackOrderId').textContent = 'Đơn hàng #' + (o.id || '---');
-    document.getElementById('trackDate').textContent = o.date ? new Date(o.date).toLocaleString('vi-VN') : '';
-    document.getElementById('trackStatus').textContent = TRACK_STEPS[trackStep]?.icon + ' ' + (TRACK_STEPS[trackStep]?.title || '');
-    
-    const tl = document.getElementById('trackTimeline');
-    tl.innerHTML = TRACK_STEPS.map((s,i) => `
-        <div class="track-step ${i < trackStep ? 'done' : i === trackStep ? 'current' : ''}">
-            <div class="track-dot"></div>
-            <div class="track-title">${s.icon} ${s.title}</div>
-            ${i <= trackStep ? `<div class="track-time">${new Date().toLocaleString('vi-VN')}</div><div class="track-desc">${s.desc}</div>` : ''}
-        </div>`).join('');
-        
-    if (o.items) {
-        document.getElementById('trackItemsList').innerHTML = o.items.map(item =>
-            `<div class="order-item-row">
-                <img src="${item.img||''}" alt="" onerror="this.src='https://placehold.co/55x55/ffd4e1/ff81a5?text=SP'">
-                <div><div class="name">${item.name}</div><div class="sub">x${item.qty}</div></div>
-                <div class="price">${fmt(item.price*item.qty)}</div>
-            </div>`
-        ).join('');
-    }
-}
-
-function simulateNextStep() {
-    if (trackStep < TRACK_STEPS.length-1) { 
-        trackStep++; renderTracking(); 
-        showToast(TRACK_STEPS[trackStep].icon + ' ' + TRACK_STEPS[trackStep].title); 
-    } else { 
-        showToast('Đơn hàng đã giao thành công! 🎉'); 
-    }
-}
-
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
    if (document.getElementById('cartItemsList')) {
@@ -339,4 +300,30 @@ function logoutCart() {
     localStorage.removeItem('isLogin');
     localStorage.removeItem('username');
     location.reload();
+}
+
+function loginTK() {
+    const username = document.querySelector('.login-overlay input[type="text"]')?.value;
+    const password = document.querySelector('.login-overlay input[type="password"]')?.value;
+
+    if (username === "Hồ Ngọc Hà" && password === "123456") {
+        localStorage.setItem("isLogin", "true");
+        localStorage.setItem("username", username);
+        localStorage.setItem("luv_user", JSON.stringify({ name: username }));
+
+        // Đóng form đăng nhập
+        document.querySelector('.login-overlay')?.classList.remove('active');
+        document.getElementById('loginPromptOverlay')?.classList.remove('active');
+
+        updateHeaderLogin();
+        showToast('Đăng nhập thành công! 👋');
+
+        // Chỉ chuyển bước 2 nếu người dùng đang bị chặn vì chưa đăng nhập
+        if (window._pendingCheckout) {
+            window._pendingCheckout = false;
+            setTimeout(() => goToStep2(), 800);
+        }
+    } else {
+        showToast('Sai tài khoản hoặc mật khẩu!');
+    }
 }

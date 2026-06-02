@@ -114,10 +114,12 @@ function init() {
     } catch(e){}
 
     // Cập nhật tên tài khoản trên sidebar (Giữ nguyên code cũ của bạn)
-    try {
-        const o = JSON.parse(localStorage.getItem('luv_order'));
-        if(o && o.name) document.getElementById('sidebarName').textContent = o.name;
-    } catch(e){}
+  try {
+    const user = JSON.parse(localStorage.getItem('luv_user'));
+    const o = JSON.parse(localStorage.getItem('luv_order'));
+    const name = user?.name || o?.name || 'Khách';
+    document.getElementById('sidebarName').textContent = name;
+} catch(e){}
 
     renderOrders('all');
 }

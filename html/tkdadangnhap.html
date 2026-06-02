@@ -71,7 +71,7 @@
                 </div>
         </div>
 
-        <div class="cart">
+        <div class="cart" onclick="window.location.href='cart.html';">
             <i class="bx bx-cart" ></i>
             <span class="cart-count" id="cartCount">0</span>
             <p>Giỏ hàng</p>
@@ -215,6 +215,21 @@
                 </div>
                 <button class="logout-btn" onclick="alert('Đã đăng xuất!')">Đăng xuất</button>
             </div>
+
+            <!-- TAB: ĐƠN MUA -->
+            <div class="tab-content" id="tab-donmua" style="display:none;">
+                <div class="tabs-scroll">
+                    <div class="tabs-row">
+                        <button class="tab-btn active" onclick="filterOrders('all', this)">Tất cả</button>
+                        <button class="tab-btn" onclick="filterOrders('confirmed', this)">Chờ xác nhận</button>
+                        <button class="tab-btn" onclick="filterOrders('pickup', this)">Chờ lấy hàng</button>
+                        <button class="tab-btn" onclick="filterOrders('shipping', this)">Đang giao</button>
+                        <button class="tab-btn" onclick="filterOrders('delivered', this)">Đã giao</button>
+                        <button class="tab-btn" onclick="filterOrders('cancelled', this)">Đã hủy</button>
+                    </div>
+                </div>
+                <div id="ordersList"></div>
+            </div>
         </div>
     </main>
 
@@ -223,7 +238,7 @@
         <div class="footer-container">
             <!-- LOGO -->
             <div class="footer-col footer-logo">
-                <img src="../img/logo1.jpg" alt="logo">
+                <img src="/img/logo1.jpg" alt="logo">
                 </div>
                 <!-- GIỚI THIỆU -->
                 <div class="footer-col">
@@ -263,6 +278,19 @@
         </div>
      </footer>
    </div>
+
+   <!-- MODAL XÁC NHẬN ĐƠN HÀNG -->
+   <div class="modal-overlay" id="modalOverlay">
+       <div class="modal-box">
+           <h3 id="modalTitle">Xác nhận</h3>
+           <p id="modalMsg">Bạn có chắc không?</p>
+           <div class="modal-actions">
+               <button class="btn-dismiss" onclick="closeModal()">Hủy</button>
+               <button class="btn-confirm" id="modalConfirmBtn">Xác nhận</button>
+           </div>
+       </div>
+   </div>
+   <div class="toast-msg" id="toastMsg"></div>
 
    <script src="../js/tkdadangnhap.js"></script>
 
