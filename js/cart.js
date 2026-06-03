@@ -277,8 +277,8 @@ function updateHeaderLogin() {
     if (isLoggedIn()) {
         const username = localStorage.getItem('username') || 'Tài khoản';
         accountMenu.innerHTML = `
-            <p onclick="window.location.href='tkdadangnhap.html'">👤 ${username}</p>
-            <p onclick="logoutCart()">Đăng xuất</p>
+            <p onclick="window.location.href='tkdadangnhap.html'">TÀi khoản của tôi</p>
+            <p onclick="logoutCart()">Đăng xuất<i class="bx bx-arrow-out-right-square-half"></i></p>
         `;
     } else {
         accountMenu.innerHTML = `

@@ -280,3 +280,22 @@ document.addEventListener('DOMContentLoaded', function(){
     setInterval(tick, 1000); 
     tick();
 })();
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+
+        const keyword = searchInput.value.trim();
+
+        if (keyword !== "") {
+
+            window.location.href =
+                "SpSearch.html?keyword=" + encodeURIComponent(keyword);
+
+        }
+
+    }
+
+});

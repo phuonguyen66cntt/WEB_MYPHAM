@@ -297,6 +297,12 @@ html {
     border-radius: 0;
 }
 
+.tab-content{
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+}
+
 #tab-hoso {
     grid-column: 1 / -1;
     display: grid;

@@ -75,7 +75,7 @@
                 <div class="cart">
                     <i class="bx bx-cart" ></i>
                     <span class="cart-count" id="cartCount">0</span>
-                    <p>Giỏ hàng</p>
+                    <p onclick="window.location.href='cart.html'" style="cursor:pointer;">Giỏ hàng</p>
                 </div>
                 <div class="item account-item">
                     <i class='bx bx-user'></i>
@@ -419,10 +419,9 @@ function updateHeaderLogin() {
     if (isLogin && accountMenu) {
         const username = localStorage.getItem('username') || 'Thành viên';
         accountMenu.innerHTML = `
-            <p onclick="window.location.href='tkdadangnhap.html'" style="cursor:pointer; font-weight:bold;">👤 ${username}</p>
-            <p onclick="logoutUser()" style="cursor:pointer; color:#999;">Đăng xuất</p>
-            <p class="open-admin" onclick="document.querySelector('.admin-overlay').classList.add('active')" style="border-top:1px solid #eee; padding-top:5px; margin-top:5px; color:#ff81a5; cursor:pointer;">Mở Admin</p>
-        `;
+            <p onclick="window.location.href='tkdadangnhap.html'" style="cursor:pointer;">Tài khoản của tôi</p>
+            <p onclick="logoutUser()" style="cursor:pointer; color:#ff81a5;">Đăng xuất<i class="bx bx-arrow-out-right-square-half"></i></p>
+        `;    
     }
 }
 
