@@ -58,3 +58,12 @@ function logout() {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".search input").value = "";
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get("keyword");
+
+    if(keyword){
+        document.getElementById("pageTitle").textContent = keyword;
+    }
+});
