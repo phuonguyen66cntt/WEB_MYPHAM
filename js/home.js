@@ -157,8 +157,18 @@ function registerTK() {
     let username = document.querySelector('.register-frame input[type="text"]')?.value;
     let email = document.querySelector('.register-frame input[type="email"]')?.value;
     let password = document.querySelector('.register-frame input[type="password"]')?.value;
+
     if(username && email && password){
+
+        localStorage.setItem("isLogin", "true");
+        localStorage.setItem("username", username);
+
+        localStorage.setItem("luv_user", JSON.stringify({
+            name: username
+        }));
+
         window.location.href = "tkdadangnhap.html";
+
     }else{
         alert("Vui lòng nhập đầy đủ thông tin!");
     }
