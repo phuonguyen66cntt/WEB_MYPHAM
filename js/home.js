@@ -199,8 +199,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (isLogin === "true") {
         accountMenu.innerHTML = `
-            <p onclick="goProfile()" style="cursor:pointer; font-weight:600;">👤 ${username || 'Tài khoản của tôi'}</p>
-            <p onclick="logout()" style="cursor:pointer; color:#999; margin-left:10px;">Đăng xuất <i class="bx bx-arrow-out-right-square-half"></i></p>
+            <p onclick="goProfile()" style="cursor:pointer;">Tài khoản của tôi</p>
+            <p onclick="logout()" style="cursor:pointer; color: #ff81a5;">Đăng xuất <i class="bx bx-arrow-out-right-square-half"></i></p>
         `;
     } else {
         accountMenu.innerHTML = `
