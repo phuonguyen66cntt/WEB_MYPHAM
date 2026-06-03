@@ -18,6 +18,7 @@ function showTab(tabName, clickedItem) {
 
 
 window.addEventListener('DOMContentLoaded', () => {
+    loadProfile();
     // 1. Đọc tham số ?tab=... trên URL
     const params = new URLSearchParams(window.location.search);
     const tab = params.get('tab');
@@ -58,21 +59,40 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     }
 });
 
+
 // ===== LƯU HỒ SƠ =====
 function saveProfile() {
-    const updatedUsername = document.getElementById('input-username').value;
-    const updatedEmail = document.getElementById('input-email').value;
-    const updatedPhone = document.getElementById('input-phone').value;
-    const updatedAddress = document.getElementById('input-address').value;
+    const updatedUsername = document.getElementById('input-username').value.trim();
+    const updatedEmail    = document.getElementById('input-email').value.trim();
+    const updatedPhone    = document.getElementById('input-phone').value.trim();
+    const updatedAddress  = document.getElementById('input-address').value.trim();
 
-    if (!updatedUsername.trim()) {
+    if (!updatedUsername) {
         alert("Tên đăng nhập không được để trống!");
         return;
     }
 
+    // Lưu vào localStorage dưới dạng object luv_user (đồng bộ với orders.js)
+    const userObj = { name: updatedUsername, email: updatedEmail, phone: updatedPhone, address: updatedAddress };
+    localStorage.setItem('luv_user', JSON.stringify(userObj));
+
+    // Cập nhật DOM ngay
     document.getElementById('leftUsername').innerText = updatedUsername;
     alert("Thông tin cá nhân của bạn đã được cập nhật thành công!");
-
-    console.log({ username: updatedUsername, email: updatedEmail, phone: updatedPhone, address: updatedAddress });
 }
 
+// ===== TẢI THÔNG TIN ĐÃ LƯU =====
+function loadProfile() {
+    try {
+        const user = JSON.parse(localStorage.getItem('luv_user'));
+        if (!user) return;
+
+        if (user.name)    { 
+            document.getElementById('input-username').value = user.name;
+            document.getElementById('leftUsername').innerText = user.name;
+        }
+        if (user.email)   document.getElementById('input-email').value   = user.email;
+        if (user.phone)   document.getElementById('input-phone').value   = user.phone;
+        if (user.address) document.getElementById('input-address').value = user.address;
+    } catch(e) {}
+}
